@@ -107,6 +107,20 @@
             <version>8.0.13</version>
         </dependency>
 
+        <!-- FasterXML Jackson Core -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>2.9.7</version>
+        </dependency>
+
+        <!-- FasterXML Jackson Databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.7</version>
+        </dependency>
+
     </dependencies>
 
 </project>
