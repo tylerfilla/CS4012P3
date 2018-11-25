@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+    <appenders>
+        <console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </console>
+    </appenders>
+    <loggers>
+        <root level="warn">
+            <appender-ref ref="console"/>
+        </root>
+        <logger name="edu.umsl.mail.tsfn88.project3" level="trace"/>
+        <logger name="org.apache" level="debug"/>
+        <logger name="org.springframework" level="debug"/>
+    </loggers>
+</configuration>
