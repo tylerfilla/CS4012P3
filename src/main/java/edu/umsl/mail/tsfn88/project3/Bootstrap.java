@@ -7,6 +7,12 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+/*
+ * Tyler Filla
+ * CS 4012
+ * Project 3
+ */
+
 import org.springframework.web.servlet.DispatcherServlet;
 
 import javax.servlet.ServletContext;
