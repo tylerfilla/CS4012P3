@@ -10,6 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import edu.umsl.mail.tsfn88.project3.context.api.site.entity.AdminCreds;
 import edu.umsl.mail.tsfn88.project3.context.api.site.entity.StoredUser;
 import edu.umsl.mail.tsfn88.project3.context.api.site.service.UserService;
+import edu.umsl.mail.tsfn88.project3.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpHeaders;
@@ -104,15 +105,16 @@ public class UserController {
     public ResponseEntity<StoredUser> userIdDelete(@PathVariable long userId, @RequestBody AdminCreds creds) {
         log.trace("delete /userId = " + userId);
 
-        throw new IllegalStateException("not implemented");
-        /*
         try {
-            return ResponseEntity.ok(userService.removeUser(userId));
+            userService.removeUser(userId, creds);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (UserService.UserNotFoundException ignored) {
             // User not found by ID
-            return null;
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } catch (UserService.AuthenticationException ignored) {
+            // Authentication failure
+            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
-        */
     }
 
     @RequestMapping(path = "/{userId}", method = RequestMethod.OPTIONS)

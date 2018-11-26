@@ -6,6 +6,7 @@
 
 package edu.umsl.mail.tsfn88.project3.context.api.site.service;
 
+import edu.umsl.mail.tsfn88.project3.context.api.site.entity.AdminCreds;
 import edu.umsl.mail.tsfn88.project3.context.api.site.entity.StoredUser;
 
 import java.util.List;
@@ -32,9 +33,10 @@ public interface UserService {
      * Remove a user by its unique ID.
      *
      * @param id The user's unique ID
+     * @param creds The admin credentials
      * @return The removed user
      */
-    StoredUser removeUser(long id);
+    StoredUser removeUser(long id, AdminCreds creds);
 
     /**
      * Get a user by its unique ID.
@@ -73,6 +75,12 @@ public interface UserService {
          */
         public List<String> missingFields;
 
+    }
+
+    /**
+     * An exception thrown to indicate an authentication failure.
+     */
+    class AuthenticationException extends RuntimeException {
     }
 
 }

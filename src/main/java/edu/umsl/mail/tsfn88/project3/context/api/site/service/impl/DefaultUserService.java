@@ -6,12 +6,11 @@
 
 package edu.umsl.mail.tsfn88.project3.context.api.site.service.impl;
 
+import edu.umsl.mail.tsfn88.project3.context.api.site.entity.AdminCreds;
 import edu.umsl.mail.tsfn88.project3.context.api.site.entity.StoredUser;
 import edu.umsl.mail.tsfn88.project3.context.api.site.service.UserService;
 import edu.umsl.mail.tsfn88.project3.entity.User;
 import edu.umsl.mail.tsfn88.project3.repository.UserRepository;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.Transactional;
@@ -26,6 +25,16 @@ import java.util.Objects;
 @Service
 @EnableTransactionManagement
 public class DefaultUserService implements UserService {
+
+    /**
+     * The admin username.
+     */
+    private static final String ADMIN_USERNAME = "admin";
+
+    /**
+     * The admin password.
+     */
+    private static final String ADMIN_PASSWORD = "admin";
 
     @Inject UserRepository userRepository;
 
@@ -63,7 +72,10 @@ public class DefaultUserService implements UserService {
 
     @Override
     @Transactional
-    public StoredUser removeUser(long id) {
+    public StoredUser removeUser(long id, AdminCreds creds) {
+        if (!ADMIN_USERNAME.equals(creds.adminusername) || !ADMIN_PASSWORD.equals(creds.adminpassword))
+            throw new AuthenticationException();
+
         if (!userRepository.existsById(id))
             throw new UserNotFoundException();
 
