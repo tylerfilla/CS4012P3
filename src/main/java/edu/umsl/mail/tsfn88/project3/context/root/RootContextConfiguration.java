@@ -25,7 +25,7 @@ import javax.sql.DataSource;
  * Configuration for the root context.
  */
 @Configuration
-@EnableJpaRepositories(basePackages = "edu.umsl.mail.tsfn88.repository")
+@EnableJpaRepositories(basePackages = "edu.umsl.mail.tsfn88.project3.repository")
 @EnableTransactionManagement
 public class RootContextConfiguration {
 
@@ -76,7 +76,7 @@ public class RootContextConfiguration {
         // Create entity manager factory with above configuration for our entities
         // The data source and vendor adapter beans are autowired into this function
         LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
-        bean.setPackagesToScan("edu.umsl.group1.entity");
+        bean.setPackagesToScan("edu.umsl.mail.tsfn88.project3");
         bean.setDataSource(dataSource);
         bean.setJpaVendorAdapter(jpaVendorAdapter);
         return bean;

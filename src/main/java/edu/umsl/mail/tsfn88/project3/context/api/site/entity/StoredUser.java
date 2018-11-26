@@ -11,6 +11,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class StoredUser {
 
     @JsonProperty
+    public long id;
+
+    @JsonProperty
     public String username;
 
     @JsonProperty
@@ -21,5 +24,8 @@ public class StoredUser {
 
     @JsonProperty
     public String lastname;
+
+    @JsonProperty
+    public Long modified;
 
 }
